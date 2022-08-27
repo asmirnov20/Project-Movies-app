@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Button, { OutlineButton } from '../../Buttons/Button'
 import TrailerModal from "../TrailerModal/TrailerModal"
 
-const SlideItem = ({ item, className, setShowTrailer, showTrailer }) => {
+const SlideItem = ({ item, setShowTrailer, showTrailer }) => {
 
     const navigate = useNavigate()
 
@@ -18,10 +18,7 @@ const SlideItem = ({ item, className, setShowTrailer, showTrailer }) => {
     }
 
     return (
-        <div
-            className={`hero-slide__item ${className}`}
-            style={{ backgroundImage: `url(${background})` }}
-        >
+        <div className='hero-slide__item' style={{ backgroundImage: `url(${background})` }}>
             <div className="hero-slide__item__content container">
 
                 <div className="hero-slide__item__content__info">
@@ -29,24 +26,19 @@ const SlideItem = ({ item, className, setShowTrailer, showTrailer }) => {
                     <div className="overview">{item.overview}</div>
 
                     <div className="btns">
-                        <Button onClick={navigateToMovie}
-                        >
+                        <Button onClick={navigateToMovie}>
                             Watch Now
                         </Button>
-                        <OutlineButton
-                            className='btn-outline btn'
-                            onClick={getTrailer}
-                        >
+
+                        <OutlineButton className='btn-outline btn' onClick={getTrailer}>
                             Watch trailer
                         </OutlineButton>
                     </div>
-
                 </div>
 
                 <div className="hero-slide__item__content__poster">
                     <img src={apiConfig.w500Image(item.poster_path)} alt="poster" />
                 </div>
-
             </div>
 
             {showTrailer && (

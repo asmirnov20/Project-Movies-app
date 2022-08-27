@@ -20,7 +20,7 @@ const TrailerModal = ({ item, setShowTrailer }) => {
 
         getTrailer()
 
-    }, [trailerSrc])
+    }, [item.id])
 
 
     const closeModal = () => {

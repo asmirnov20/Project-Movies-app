@@ -1,13 +1,13 @@
 import tmdbApi, { movieType } from "../../api/tmdbApi"
-import { useState, useEffect } from "react"
-import SwiperCore, { Autoplay } from 'swiper'
+import { useState, useEffect, useRef } from "react"
+import SwiperCore, { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import './HeroSlide.scss'
 import SlideItem from "./SlideItem/SlideItem"
 
 const HeroSlide = () => {
 
-    SwiperCore.use([Autoplay])
+    SwiperCore.use([Navigation])
 
     const [movieItems, setMovieItems] = useState([])
 
@@ -29,26 +29,36 @@ const HeroSlide = () => {
 
     const [showTrailer, setShowTrailer] = useState(false)
 
+    const swiperRef = useRef(null);
+
     return (
         <div className="hero-slide">
             <Swiper
-                modules={[Autoplay]}
-                grabCursor={true}
-                spaceBetween={0}
-                slidesPerView={1}
+                ref={swiperRef}
+                modules={[Navigation]}
+                // grabCursor={true}
+                // spaceBetween={0}
+                // slidesPerView={1}
+                rewind={true}
+
             // autoplay={{ delay: 3000 }}
             >
                 {movieItems.map((item, index) => (
                     <SwiperSlide key={index}>
-                        {({ isActive }) => (
-
-                            <SlideItem item={item} className={`${isActive ? 'active' : ''}`} setShowTrailer={setShowTrailer} showTrailer={showTrailer} />
-                        )}
+                        <SlideItem
+                            item={item}
+                            setShowTrailer={setShowTrailer}
+                            showTrailer={showTrailer} />
                     </SwiperSlide>
                 ))}
-            </Swiper>
+                <div className="slider-prev" onClick={() => swiperRef.current.swiper.slidePrev()}>
+                    Prev
+                </div>
+                <div className='slider-next' onClick={() => swiperRef.current.swiper.slideNext()}>
+                    Next
+                </div>
 
-
+            </Swiper >
 
         </div >
     )

@@ -5,6 +5,9 @@
     font-weight: 600;
 
     @include flex(center, unset);
+    @include mobile{
+        @include flex(center,center)
+    }
 
     img {
         margin-right: 10px;
@@ -36,9 +39,6 @@
         height: 100%;
         padding: 0 2rem;
 
-        @include mobile {
-            justify-content: center;
-        }
     }
 
     &__nav {

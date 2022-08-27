@@ -35,4 +35,9 @@ button {
     color: $main-color;
     background-color: $white;
 }
+.btn.small {
+    border-width: 2px;
+    padding: 0.25rem 1.5rem;
+    font-size: 1rem;
+}
 

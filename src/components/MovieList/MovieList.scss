@@ -1,0 +1,53 @@
+@use "../../scss/breakpoints" as *;
+
+.movie-list { 
+    .swiper{
+        position: relative;
+       
+        &:hover i.fa{
+            opacity: 1;
+        }
+    }
+    .swiper-slide {
+        width: 15%;
+
+        @include tablet {
+            width: 30%;
+        }
+
+        @include mobile {
+            width: 40%;
+        }
+    }
+}
+
+i.fa {
+    cursor: pointer;
+    text-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
+    font-size: 6rem;
+    position: absolute;
+    color: rgb(255, 221, 0);
+    z-index: 10;
+    top: 50%;
+    left: 1%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.25s ease-in;
+
+    @include mobile{
+        display:none
+    }
+}
+.fa-angle-left{
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -95%);
+}
+.fa-angle-right{
+    top: 50%;
+    right: 10%;
+    transform: translate(108.7%, -85%);
+}
