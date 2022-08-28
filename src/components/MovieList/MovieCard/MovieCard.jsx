@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { category } from "../../../api/tmdbApi"
 import apiConfig from "../../../api/apiConfig"
-import Button from "../../Buttons/Button"
+import Button from "../../buttons/Button"
 import './MovieCard.scss'
 
 const MovieCard = ({ item, categorization }) => {

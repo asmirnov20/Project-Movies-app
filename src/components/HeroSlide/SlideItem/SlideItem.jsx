@@ -1,6 +1,6 @@
 import apiConfig from "../../../api/apiConfig"
 import { useNavigate } from 'react-router-dom'
-import Button, { OutlineButton } from '../../Buttons/Button'
+import Button, { OutlineButton } from '../../buttons/Button'
 import TrailerModal from "../TrailerModal/TrailerModal"
 
 const SlideItem = ({ item, setShowTrailer, showTrailer }) => {
