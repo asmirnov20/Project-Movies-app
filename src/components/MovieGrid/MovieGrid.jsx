@@ -7,10 +7,10 @@ import MovieSearch from './MovieSearch/MovieSearch'
 import './MovieGrid.scss'
 
 
-const MovieGrid = ({ kind }) => {
+const MovieGrid = ({ category }) => {
 
-    const { category } = useParams()
-
+    const { urlCategory } = useParams()
+    const { searchWord } = useParams()
     const [items, setItems] = useState()
     const [displayedPages, setDisplayedPages] = useState(1)
     const [existingPages, setExistingPages] = useState(0)
@@ -18,13 +18,22 @@ const MovieGrid = ({ kind }) => {
     useEffect(() => {
         const getInitialList = async () => {
             let response;
-            const params = {}
-            if (category === 'tv') {
-                response = await tmdbApi.getTvList(tvType.popular, { params })
-            }
-            if (category === 'movie') {
-                response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
-                console.log(response);
+
+            if (searchWord === undefined) {
+                const params = {}
+
+                if (urlCategory === 'tv') {
+                    response = await tmdbApi.getTvList(tvType.popular, { params })
+                }
+                if (urlCategory === 'movie') {
+                    response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
+                    console.log(response);
+                }
+            } else {
+                const params = {
+                    query: searchWord
+                }
+                response = await tmdbApi.search(urlCategory, { params })
             }
 
             setItems(response.results)
@@ -32,19 +41,29 @@ const MovieGrid = ({ kind }) => {
         }
 
         getInitialList()
-    }, [category])
+    }, [urlCategory, searchWord])
 
     const loadMore = async () => {
         let response;
-        const params = {
-            page: displayedPages + 1
-        }
-        if (category === 'tv') {
-            response = await tmdbApi.getTvList(tvType.popular, { params })
-        }
-        if (category === 'movie') {
-            response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
-            console.log(response);
+
+        if (searchWord === undefined) {
+
+            const params = {
+                page: displayedPages + 1
+            }
+            if (urlCategory === 'tv') {
+                response = await tmdbApi.getTvList(tvType.popular, { params })
+            }
+            if (urlCategory === 'movie') {
+                response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
+                console.log(response);
+            }
+        } else {
+            const params = {
+                page: displayedPages + 1,
+                query: searchWord
+            }
+            response = await tmdbApi.search(urlCategory, { params })
         }
 
         setItems([...items, ...response.results])
@@ -55,12 +74,12 @@ const MovieGrid = ({ kind }) => {
     return (
         <>
             <div className="section mb-3">
-                <MovieSearch />
+                <MovieSearch urlCategory={urlCategory} />
             </div>
-            
+
             <div className="movie-grid">
                 {items && items.map((item, index) => (
-                    <MoviCard categorization={kind} item={item} key={index} />
+                    <MoviCard urlCategory={urlCategory} item={item} key={index} />
                 ))}
             </div>
 

@@ -4,9 +4,9 @@ import apiConfig from "../../../api/apiConfig"
 import Button from "../../buttons/Button"
 import './MovieCard.scss'
 
-const MovieCard = ({ item, categorization }) => {
+const MovieCard = ({ item, urlCategory }) => {
 
-    const link = `/${category[categorization]}/${item.id}`
+    const link = `/${category[urlCategory]}/${item.id}`
 
     const background = apiConfig.w500Image(item.poster_path)
     return (
@@ -17,7 +17,7 @@ const MovieCard = ({ item, categorization }) => {
                 </Button>
             </div>
             <h3>{item.title || item.name}</h3>
-            
+
         </Link>
     )
 }

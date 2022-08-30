@@ -54,7 +54,7 @@ const MovieList = ({ category, type }) => {
             >
                 {items.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <MovieCard item={item} categorization={category} />
+                        <MovieCard item={item} urlCategory={category} />
                     </SwiperSlide>
                 ))}
 

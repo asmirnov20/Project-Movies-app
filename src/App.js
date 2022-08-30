@@ -13,10 +13,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path=':category' element={<Catalog />} />
-          <Route path=':category/:id' element={<Detail />} />
-          {/* <Navigate to '/:category' replace - так как тоже ссылается на Catalog */}
-          <Route path=':category/search/:searchWord' element={<Catalog />} />
+          <Route path=':urlCategory' element={<Catalog />} />
+          <Route path=':urlCategory/:id' element={<Detail />} />
+          <Route path=':urlCategory/search/:searchWord' element={<Catalog />} />
         </Route>
       </Routes>
     </>
