@@ -5,7 +5,7 @@ import './MovieList.scss'
 import MovieCard from './MovieCard/MovieCard'
 
 
-const MovieList = ({ category, type }) => {
+const MovieList = ({ category, type, id }) => {
     console.log(category);
     const [items, setItems] = useState([])
 
@@ -27,7 +27,7 @@ const MovieList = ({ category, type }) => {
                         response = await tmdbApi.getTvList(type, { params })
                 }
             } else {
-                // response = await tmdbApi.similar(category, id)
+                response = await tmdbApi.similar(category, id)
             }
 
             setItems(response.results)
@@ -35,7 +35,7 @@ const MovieList = ({ category, type }) => {
 
         getList()
 
-    }, [])
+    }, [category, id, type])
 
     const swipeNext = () => {
         swiperRef.current.swiper.slidePrev()

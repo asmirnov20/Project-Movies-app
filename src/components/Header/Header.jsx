@@ -44,8 +44,10 @@ const Header = () => {
       <div className="header__wrapper container">
 
         <div className="logo">
-          <img src={logo} alt="logo" />
-          <NavLink to='/'>Amovies</NavLink>
+          <NavLink to='/'>
+            <img src={logo} alt="logo" />
+            Amovies
+          </NavLink>
         </div>
 
         <ul className="header__nav">

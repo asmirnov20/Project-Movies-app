@@ -7,9 +7,8 @@ import MovieSearch from './MovieSearch/MovieSearch'
 import './MovieGrid.scss'
 
 
-const MovieGrid = ({ category }) => {
+const MovieGrid = ({ urlCategory }) => {
 
-    const { urlCategory } = useParams()
     const { searchWord } = useParams()
     const [items, setItems] = useState()
     const [displayedPages, setDisplayedPages] = useState(1)
@@ -56,7 +55,6 @@ const MovieGrid = ({ category }) => {
             }
             if (urlCategory === 'movie') {
                 response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
-                console.log(response);
             }
         } else {
             const params = {

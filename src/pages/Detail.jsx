@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import tmdbApi from "../api/tmdbApi"
 import apiConfig from "../api/apiConfig"
 import CastList from "../components/Detail/CastList"
+import VideoList from "../components/Detail/VideoList"
+import MovieList from '../components/MovieList/MovieList'
 import '../components/Detail/Detail.scss'
 
 const Detail = () => {
@@ -58,7 +60,19 @@ const Detail = () => {
                 </div>
                 <CastList id={item.id} />
               </div>
+            </div>
+          </div>
 
+          <div className="container">
+            <div className="section mb-3">
+              <VideoList id={item.id} urlCategory={urlCategory} />
+            </div>
+
+            <div className="section mb-3">
+              <div className="section__header mb-2">
+                <h2>Similar</h2>
+              </div>
+              <MovieList category={urlCategory} type="similar" id={item.id} />
             </div>
           </div>
 

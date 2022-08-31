@@ -8,8 +8,6 @@ const MovieSearch = ({ urlCategory }) => {
     const [searchWord, setSearchWord] = useState('')
     const navigate = useNavigate()
 
-
-
     const goToSearch = useCallback(
         () => {
             if (searchWord.trim().length > 0) {
