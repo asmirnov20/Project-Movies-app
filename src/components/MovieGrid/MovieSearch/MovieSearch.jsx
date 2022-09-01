@@ -1,18 +1,20 @@
 import { useState, useEffect, useCallback } from "react"
 import { useNavigate } from "react-router-dom"
 import Button from "../../buttons/Button"
-
+import { useStateContext } from "../../../context/StateContext"
 
 const MovieSearch = ({ urlCategory }) => {
 
     const [searchWord, setSearchWord] = useState('')
     const navigate = useNavigate()
 
+    const { getNeededList } = useStateContext()
+
     const goToSearch = useCallback(
         () => {
             if (searchWord.trim().length > 0) {
-                navigate(`./search/${searchWord}`)
-               
+
+                getNeededList(urlCategory, searchWord)
             }
             setSearchWord('')
         }, [searchWord, navigate])

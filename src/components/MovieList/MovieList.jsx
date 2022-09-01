@@ -6,7 +6,7 @@ import MovieCard from './MovieCard/MovieCard'
 
 
 const MovieList = ({ category, type, id }) => {
-    console.log(category);
+    
     const [items, setItems] = useState([])
 
     const swiperRef = useRef()
@@ -58,8 +58,8 @@ const MovieList = ({ category, type, id }) => {
                     </SwiperSlide>
                 ))}
 
-                <i class="fa fa-angle-left fa-5x" onClick={swipeNext}></i>
-                <i class="fa fa-angle-right fa-5x" onClick={swipePrev}></i>
+                <i className="fa fa-angle-left fa-5x" onClick={swipeNext}></i>
+                <i className="fa fa-angle-right fa-5x" onClick={swipePrev}></i>
 
             </Swiper>
         </div>

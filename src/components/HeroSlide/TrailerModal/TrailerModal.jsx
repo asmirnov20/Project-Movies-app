@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react"
 import tmdbApi, { category } from "../../../api/tmdbApi"
+import { useStateContext } from "../../../context/StateContext"
 import './TrailerModal.scss'
+import { motion } from 'framer-motion'
+import { fadeInDown } from "../../../animations/animations"
 
-const TrailerModal = ({ item, setShowTrailer }) => {
+const TrailerModal = ({ item }) => {
 
-
+    const { setShowTrailer} = useStateContext()
     const [trailerSrc, setTrailerSrc] = useState('')
 
     useEffect(() => {
         // получаем трейлер
         const getTrailer = async () => {
             const response = await tmdbApi.getVideos(category.movie, item.id)
-            console.log(response);
+
             if (response.results) {
                 const fullURL = 'https://www.youtube.com/embed/' + response.results[0].key
                 setTrailerSrc(fullURL)
@@ -27,9 +30,8 @@ const TrailerModal = ({ item, setShowTrailer }) => {
         setShowTrailer(false)
     }
 
-    console.log(trailerSrc);
     return (
-        <div className='modal' >
+        <motion.div className='modal' variants={fadeInDown} initial='initial' animate='animate' exit='exit' >
             <div className="modal__content">
 
                 {trailerSrc && (
@@ -47,7 +49,7 @@ const TrailerModal = ({ item, setShowTrailer }) => {
                 )}
 
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -1,13 +1,13 @@
 import tmdbApi, { movieType } from "../../api/tmdbApi"
 import { useState, useEffect, useRef } from "react"
-import SwiperCore, { Navigation } from 'swiper'
+import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import './HeroSlide.scss'
 import SlideItem from "./SlideItem/SlideItem"
 
 const HeroSlide = () => {
 
-    SwiperCore.use([Navigation])
+    SwiperCore.use([Autoplay])
 
     const [movieItems, setMovieItems] = useState([])
 
@@ -17,7 +17,6 @@ const HeroSlide = () => {
             const params = { page: 1 }
             try {
                 const response = await tmdbApi.getMoviesList(movieType.popular, { params })
-                console.log(response);
                 setMovieItems(response.results.slice(0, 4))
             } catch (err) {
                 console.log(err);
@@ -27,36 +26,34 @@ const HeroSlide = () => {
         getMovies()
     }, [])
 
-    const [showTrailer, setShowTrailer] = useState(false)
-
     const swiperRef = useRef(null);
 
+    const autoplayOff = () => {
+        swiperRef.current.swiper.autoplay.stop()
+    }
+    const autoplayOn = () => {
+        swiperRef.current.swiper.autoplay.start()
+    }
+
     return (
-        <div className="hero-slide">
+        <div className="hero-slide"
+            onMouseEnter={autoplayOff}
+            onMouseLeave={autoplayOn}>
             <Swiper
                 ref={swiperRef}
-                modules={[Navigation]}
-                // grabCursor={true}
-                // spaceBetween={0}
-                // slidesPerView={1}
+                modules={[Autoplay]}
+                spaceBetween={0}
+                slidesPerView={1}
                 rewind={true}
-
-            // autoplay={{ delay: 3000 }}
+                autoplay={{ delay: 5000 }}
             >
                 {movieItems.map((item, index) => (
                     <SwiperSlide key={index}>
                         <SlideItem
                             item={item}
-                            setShowTrailer={setShowTrailer}
-                            showTrailer={showTrailer} />
+                        />
                     </SwiperSlide>
                 ))}
-                <div className="slider-prev" onClick={() => swiperRef.current.swiper.slidePrev()}>
-                    Prev
-                </div>
-                <div className='slider-next' onClick={() => swiperRef.current.swiper.slideNext()}>
-                    Next
-                </div>
 
             </Swiper >
 

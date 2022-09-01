@@ -6,11 +6,14 @@ import Layout from './components/Layout';
 import Catalog from './pages/Catalog'
 import Home from './pages/Home'
 import Detail from './pages/Detail'
+import { AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 function App() {
+  const location = useLocation()
   return (
-    <>
-      <Routes>
+    <AnimatePresence mode='wait'>
+      <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path=':urlCategory' element={<Catalog />} />
@@ -18,7 +21,7 @@ function App() {
           <Route path=':urlCategory/search/:searchWord' element={<Catalog />} />
         </Route>
       </Routes>
-    </>
+    </AnimatePresence>
   );
 }
 
