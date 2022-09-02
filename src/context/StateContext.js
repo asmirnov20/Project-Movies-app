@@ -7,6 +7,8 @@ const Context = createContext()
 export const StateContext = ({ children }) => {
 
     const [items, setItems] = useState([])
+    const [genres, setGenres] = useState([])
+    const [genreId, setGenreId] = useState([])
     const [displayedPages, setDisplayedPages] = useState(1)
     const [existingPages, setExistingPages] = useState(0)
 
@@ -63,6 +65,28 @@ export const StateContext = ({ children }) => {
         setDisplayedPages(displayedPages + 1)
     }
 
+    const getAllGenres = async (urlCategory) => {
+        let params = {}
+        const response = await tmdbApi.genres(urlCategory, params)
+        console.log(response);
+        setGenres(response.genres)
+    }
+
+    const handleFindByGenre = (urlCategory) => {
+        const params = {
+            with_genres: genreId
+        }
+        const getFilterResults = async () => {
+            const response = await tmdbApi.filterGenres(urlCategory, { params })
+            console.log(response);
+            setItems(response.results)
+            setExistingPages(response.total_pages)
+        }
+
+        getFilterResults()
+
+        setGenreId([])
+    }
 
     return (
         <Context.Provider
@@ -74,6 +98,10 @@ export const StateContext = ({ children }) => {
                 existingPages,
                 showTrailer,
                 setShowTrailer,
+                handleFindByGenre,
+                genres,
+                getAllGenres,
+                setGenreId
             }}
         >
             {children}

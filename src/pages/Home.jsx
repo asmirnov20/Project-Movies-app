@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { category, movieType, tvType } from '../api/tmdbApi'
-import { OutlineButton } from '../components/buttons/Button'
+import { OutlineButton } from '../components/Buttons/Button'
 import HeroSlide from '../components/HeroSlide/HeroSlide'
 import MovieList from '../components/MovieList/MovieList'
 import { pageTransition } from '../animations/animations'

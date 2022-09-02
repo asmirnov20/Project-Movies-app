@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react"
 import { useNavigate } from "react-router-dom"
-import Button from "../../buttons/Button"
+import Button from "../../Buttons/Button"
 import { useStateContext } from "../../../context/StateContext"
 
 const MovieSearch = ({ urlCategory }) => {

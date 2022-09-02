@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 // import tmdbApi, { movieType, tvType } from "../../api/tmdbApi"
-import { OutlineButton } from "../buttons/Button"
+import { OutlineButton } from "../Buttons/Button"
 import MoviCard from '../MovieList/MovieCard/MovieCard'
 import MovieSearch from './MovieSearch/MovieSearch'
 import './MovieGrid.scss'
