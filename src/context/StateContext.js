@@ -11,8 +11,9 @@ export const StateContext = ({ children }) => {
     const [genreId, setGenreId] = useState([])
     const [displayedPages, setDisplayedPages] = useState(1)
     const [existingPages, setExistingPages] = useState(0)
-
+    const [showCategories, setShowCategories] = useState(false)
     const [showTrailer, setShowTrailer] = useState(false)
+    const [showFilter, setShowFilter] = useState(false)
 
     const getNeededList = async (urlCategory, searchWord) => {
         let response;
@@ -68,7 +69,6 @@ export const StateContext = ({ children }) => {
     const getAllGenres = async (urlCategory) => {
         let params = {}
         const response = await tmdbApi.genres(urlCategory, params)
-        console.log(response);
         setGenres(response.genres)
     }
 
@@ -78,14 +78,13 @@ export const StateContext = ({ children }) => {
         }
         const getFilterResults = async () => {
             const response = await tmdbApi.filterGenres(urlCategory, { params })
-            console.log(response);
             setItems(response.results)
             setExistingPages(response.total_pages)
         }
 
         getFilterResults()
+        setShowCategories(true)
 
-        setGenreId([])
     }
 
     return (
@@ -101,7 +100,11 @@ export const StateContext = ({ children }) => {
                 handleFindByGenre,
                 genres,
                 getAllGenres,
-                setGenreId
+                setGenreId,
+                genreId,
+                showCategories,
+                showFilter,
+                setShowFilter
             }}
         >
             {children}

@@ -43,7 +43,7 @@ const MovieSearch = ({ urlCategory }) => {
                 value={searchWord}
                 onChange={e => setSearchWord(e.target.value)}
             />
-            <Button className='small' onClick={goToSearch}>
+            <Button onClick={goToSearch}>
                 Search
             </Button>
         </div>

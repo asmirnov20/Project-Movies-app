@@ -1,0 +1,84 @@
+@use "../../scss/" as *;
+.filter {
+
+    @include flex(center,stretch);
+    flex-direction: column;
+
+    &__content {
+            display: grid;
+            align-self: stretch;
+            margin: 2rem 0;
+            gap: 1.2rem;
+            grid-template-columns: repeat(6, 1fr);
+
+            @include tablet {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            @include mobile {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+}
+
+
+
+.myCheckbox {
+    @include flex(center, flex-start);
+    position: relative;
+    cursor: pointer;
+    font-size: 1.2rem;
+    user-select: none;
+    flex-wrap: nowrap;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .checkmark {
+        position: relative;
+        margin-right: 0.6rem;
+        min-height: 1.2rem;
+        min-width: 1.2rem;
+        background-color: #eee;
+
+        &:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 35%;
+            top: 10%;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+
+            @include tablet {
+                top: 0%;
+            }
+            @include mobile{
+                top:-30%;
+                left:30%
+            }
+    }
+}
+
+
+    &:hover input~.checkmark {
+        background-color: #ccc;
+    }
+
+    input:checked~.checkmark {
+        background-color: #2196F3;
+    }
+
+    input:checked~.checkmark:after {
+        display: block;
+    }
+
+}

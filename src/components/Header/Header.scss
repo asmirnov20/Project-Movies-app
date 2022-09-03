@@ -3,20 +3,25 @@
 .logo {
     font-size: 2.5rem;
     font-weight: 600;
-
+    
+    a {
     @include flex(center, unset);
-    @include mobile{
-        @include flex(center,center)
+        @include mobile {
+        @include flex(center, center)
+        }
     }
-
     img {
-        margin-right: 10px;
+        margin-right: 5px;
         width: 50px;
 
         @include mobile {
             width: 30px;
             margin-right: 0;
         }
+    }
+    div{
+        display: inline-block;
+        margin-left: 0.5rem;
     }
 }
 

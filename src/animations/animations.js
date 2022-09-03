@@ -112,3 +112,22 @@ export const catalogFadeInUp = {
         }
     }
 }
+
+export const filterAnimate = {
+    initial: {
+        scale: 0
+    },
+    animate: {
+        scale: 1,
+        transition: {
+            duration: 1,
+            ease: [0.6, -0.05, 0.01, 0.99]
+        }
+    },
+    exit: {
+        scale: 0,
+        transition: {
+            duration: 0.5
+        }
+    }
+}
