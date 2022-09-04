@@ -1,7 +1,8 @@
 import './Header.scss'
 import logo from '../../assets/logo.png'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
+import MovieSearch from '../MovieGrid/MovieSearch/MovieSearch'
 
 const headerNav = [
   {
@@ -18,14 +19,14 @@ const headerNav = [
   }
 ]
 
-
 const Header = () => {
 
   const headerRef = useRef(null)
+  const param = useParams()
 
   useEffect(() => {
     const shrinkHeader = () => {
-      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      if (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90) {
         headerRef.current.classList.add('shrink')
       } else {
         headerRef.current.classList.remove('shrink')
@@ -49,6 +50,10 @@ const Header = () => {
             <div>Amovies</div>
           </NavLink>
         </div>
+
+        {param.id && (
+          <MovieSearch urlCategory={param.urlCategory} className='inHeader' />
+        )}
 
         <ul className="header__nav">
           {headerNav.map((element, index) => (

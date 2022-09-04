@@ -11,13 +11,14 @@ export const StateContext = ({ children }) => {
     const [genreId, setGenreId] = useState([])
     const [displayedPages, setDisplayedPages] = useState(1)
     const [existingPages, setExistingPages] = useState(0)
-    const [showCategories, setShowCategories] = useState(false)
+    const [showSearchWords, setShowSearchWords] = useState(false)
     const [showTrailer, setShowTrailer] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
 
     const getNeededList = async (urlCategory, searchWord) => {
         let response;
 
+        // если не было поиска
         if (searchWord === undefined) {
             const params = {}
 
@@ -28,7 +29,10 @@ export const StateContext = ({ children }) => {
                 response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
 
             }
-        } else {
+        }
+        // если поиск был
+        else {
+            console.log(searchWord);
             const params = {
                 query: searchWord
             }
@@ -72,7 +76,7 @@ export const StateContext = ({ children }) => {
         setGenres(response.genres)
     }
 
-    const handleFindByGenre = (urlCategory) => {
+    function handleFindByGenre(urlCategory) {
         const params = {
             with_genres: genreId
         }
@@ -83,8 +87,6 @@ export const StateContext = ({ children }) => {
         }
 
         getFilterResults()
-        setShowCategories(true)
-
     }
 
     return (
@@ -102,9 +104,11 @@ export const StateContext = ({ children }) => {
                 getAllGenres,
                 setGenreId,
                 genreId,
-                showCategories,
                 showFilter,
-                setShowFilter
+                setShowFilter,
+                showSearchWords,
+                setShowSearchWords,
+
             }}
         >
             {children}

@@ -39,6 +39,12 @@
             padding: 0.45rem 1rem;
         }
     }
+    
+    &__results{
+        font-size: 1.3rem;
+        margin: 2.5rem;
+        text-align: center;
+    }
 }
 
 input {
@@ -53,5 +59,40 @@ input {
     @include mobile{
         padding: 1rem 1.5rem;
         font-size: 1.4rem;
+    }
+}
+
+.inHeader{
+    width: 40%;
+
+    @include mobile{
+        width: 60%;
+    }
+
+    input {
+        margin-top: 0.3rem;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+
+        @include tablet {
+            padding: 0.6rem 1rem;        
+        }
+         @include mobile{
+            font-size: 1.1rem;
+            padding: 0.6rem 1rem;
+         }
+    }
+
+    button {
+        margin-top:0.3rem;
+        padding:0.25rem 0.8rem;
+        font-size: 1rem;
+
+        @include tablet{
+            padding: 0.25rem 0.6rem;
+        }
+        @include mobile{
+            padding: 0.15rem 0.55rem;
+        }
     }
 }

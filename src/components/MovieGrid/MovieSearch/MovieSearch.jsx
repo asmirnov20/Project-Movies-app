@@ -3,20 +3,23 @@ import { useNavigate } from "react-router-dom"
 import Button from "../../Buttons/Button"
 import { useStateContext } from "../../../context/StateContext"
 
-const MovieSearch = ({ urlCategory }) => {
+const MovieSearch = ({ urlCategory, className }) => {
 
     const [searchWord, setSearchWord] = useState('')
     const navigate = useNavigate()
 
-    const { getNeededList } = useStateContext()
+    const { getNeededList, setShowSearchWords, showSearchWords } = useStateContext()
 
     const goToSearch = useCallback(
         () => {
             if (searchWord.trim().length > 0) {
 
                 getNeededList(urlCategory, searchWord)
+                navigate(`/${urlCategory}/search/${searchWord}`)
             }
-            setSearchWord('')
+
+            setShowSearchWords(true)
+            // setSearchWord('')
         }, [searchWord, navigate])
 
     useEffect(() => {
@@ -36,15 +39,15 @@ const MovieSearch = ({ urlCategory }) => {
 
 
     return (
-        <div className="movie-search">
+        <div className={`movie-search ${className}`}>
             <input
                 type='text'
                 placeholder='Enter...'
                 value={searchWord}
                 onChange={e => setSearchWord(e.target.value)}
             />
-            <Button onClick={goToSearch}>
-                Search
+            <Button onClick={goToSearch} >
+                {className ? `Find ${urlCategory}` : 'Search'}
             </Button>
         </div>
     )

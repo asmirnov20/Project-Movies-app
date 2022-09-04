@@ -22,6 +22,10 @@
     div{
         display: inline-block;
         margin-left: 0.5rem;
+
+        @include tablet{
+            display: none;
+        }
     }
 }
 
@@ -43,7 +47,6 @@
         @include flex(center, space-between);
         height: 100%;
         padding: 0 2rem;
-
     }
 
     &__nav {

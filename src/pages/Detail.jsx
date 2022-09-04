@@ -8,6 +8,7 @@ import MovieList from '../components/MovieList/MovieList'
 import '../components/Detail/Detail.scss'
 import { pageTransition, fadeInRight, stagger, detailsFadeInUp } from '../animations/animations'
 import { motion } from 'framer-motion'
+import MovieSearch from "../components/MovieGrid/MovieSearch/MovieSearch"
 
 const Detail = () => {
 
@@ -28,7 +29,10 @@ const Detail = () => {
   const background = { backgroundImage: `url(${apiConfig.originalImage(item.backdrop_path || item.poster_path)})` }
 
   return (
+
+
     <motion.div initial='initial' animate='animate' exit='exit' variants={pageTransition}>
+    
       {item && (
         <>
           <div className="banner" style={background}></div>

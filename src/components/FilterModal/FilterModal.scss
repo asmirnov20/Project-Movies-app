@@ -18,10 +18,8 @@
             @include mobile {
                 grid-template-columns: repeat(4, 1fr);
             }
-        }
+    }
 }
-
-
 
 .myCheckbox {
     @include flex(center, flex-start);
@@ -81,4 +79,7 @@
         display: block;
     }
 
+}
+.button__find{
+    font-size: 1.2rem;
 }

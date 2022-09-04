@@ -2,15 +2,10 @@ import Button from "../Buttons/Button"
 import { useStateContext } from "../../context/StateContext"
 import { useEffect } from "react"
 import './FilterModal.scss'
-import { useState } from "react"
-import { motion } from "framer-motion"
-
 
 const FilterModal = ({ urlCategory }) => {
 
-    const [selectedCategoryNames, setSelectedCategoryNames] = useState([])
-
-    const { genres, handleFindByGenre, getAllGenres, setGenreId, genreId, showCategories } = useStateContext()
+    const { genres, handleFindByGenre, getAllGenres, setGenreId, genreId} = useStateContext()
 
     useEffect(() => {
 
@@ -19,19 +14,15 @@ const FilterModal = ({ urlCategory }) => {
     }, [])
 
     const handleClick = (e, id) => {
-
-        const checkedCategory = genres.find(genre => genre.id === id ? genre : null)
-        // если элемент выбран и id уникально, то добавляем имя и id
+        // если элемент выбран и id уникально, то добавляем id
         if (e.target.checked) {
-            if (!genreId.includes(id)) {
 
-                setSelectedCategoryNames(prev => [...prev, checkedCategory.name])
+            if (!genreId.includes(id)) {
                 setGenreId(prevState => [...prevState, id])
             }
         }
-        // если элемент не выбран, то удаляем его имя и id
+        // если элемент не выбран, то удаляем его id
         else {
-            setSelectedCategoryNames(selectedCategoryNames.filter(item => item !== checkedCategory.name))
             setGenreId(genreId.filter(item => item !== id))
         }
     }
@@ -39,10 +30,13 @@ const FilterModal = ({ urlCategory }) => {
     return (
         <div className="filter" >
             <h2>Choose Category</h2>
+
             <div className="filter__content">
                 {genres && genres.map(({ name, id }) => (
                     <label className="myCheckbox" key={id} >
-                        <input type="checkbox" name="radio"
+                        <input
+                            type="checkbox"
+                            name="radio"
                             onClick={(e) => handleClick(e, id)}
                         />
                         <span className="checkmark"></span>
@@ -53,15 +47,12 @@ const FilterModal = ({ urlCategory }) => {
                 ))}
             </div>
 
-            <Button onClick={() => handleFindByGenre(urlCategory)} >
+            <Button
+                onClick={() => handleFindByGenre(urlCategory)}
+                className='button__find'
+            >
                 Let's Find
             </Button>
-
-            {showCategories && selectedCategoryNames.map(category => (
-                <ul>
-                    <li>{category}</li>
-                </ul>
-            ))}
 
         </div>
     )
