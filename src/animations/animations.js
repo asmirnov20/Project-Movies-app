@@ -1,6 +1,6 @@
 export const fadeInUp = {
     initial: {
-        y: 200,
+        y: 100,
         opacity: 0
     },
     animate: {

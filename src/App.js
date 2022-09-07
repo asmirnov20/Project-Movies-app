@@ -19,6 +19,7 @@ function App() {
           <Route path=':urlCategory' element={<Catalog />} />
           <Route path=':urlCategory/:id' element={<Detail />} />
           <Route path=':urlCategory/search/:searchWord' element={<Catalog />} />
+          <Route path=':urlCategory/find/:genre' element={<Catalog />} />
         </Route>
       </Routes>
     </AnimatePresence>

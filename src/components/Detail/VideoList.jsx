@@ -18,8 +18,7 @@ const VideoList = ({ id, urlCategory }) => {
 
     return (
         <>
-            {
-                videos.map((item, index) => (
+            {videos.map((item, index) => (
                     <Video key={index} item={item} />
                 ))
             }

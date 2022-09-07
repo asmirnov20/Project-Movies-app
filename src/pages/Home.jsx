@@ -51,7 +51,6 @@ const Home = () => {
         whileInView='animate'
         exit={{ opacity: 0 }}
         variants={fadeInUp}
-      // viewport={{ once: true }}
       >
 
         {homeContent.map((item, index) => (

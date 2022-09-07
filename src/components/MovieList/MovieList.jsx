@@ -48,7 +48,6 @@ const MovieList = ({ category, type, id }) => {
             <Swiper
                 ref={swiperRef}
                 rewind={true}
-                // grabCursor={true}
                 spaceBetween={10}
                 slidesPerView={'auto'}
             >

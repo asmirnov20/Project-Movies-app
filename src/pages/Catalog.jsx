@@ -12,12 +12,17 @@ const Catalog = () => {
 
   return (
     <AnimateSharedLayout>
-      <motion.div initial='initial' animate='animate' exit='exit' variants={pageTransition}>
+      <motion.div
+        initial='initial'
+        animate='animate'
+        exit='exit'
+        variants={pageTransition}
+      >
         <PageHeader>
           <h2>{urlCategory === category.movie ? 'Movies' : 'TV Series'}</h2>
         </PageHeader>
-        <div className="container">
 
+        <div className="container">
           <motion.div className="section mb-3" layout>
             <MovieGrid urlCategory={urlCategory} />
           </motion.div>

@@ -2,16 +2,21 @@ import Button from "../Buttons/Button"
 import { useStateContext } from "../../context/StateContext"
 import { useEffect } from "react"
 import './FilterModal.scss'
+import { useNavigate } from "react-router-dom"
+
 
 const FilterModal = ({ urlCategory }) => {
 
-    const { genres, handleFindByGenre, getAllGenres, setGenreId, genreId} = useStateContext()
+    const navigate = useNavigate()
+    const { genres, handleFindByGenre, getAllGenres, setGenreId, genreId } = useStateContext()
 
     useEffect(() => {
-
         getAllGenres(urlCategory)
-
     }, [])
+
+    useEffect(() => {
+        setGenreId([])
+    }, [urlCategory])
 
     const handleClick = (e, id) => {
         // если элемент выбран и id уникально, то добавляем id
@@ -27,12 +32,17 @@ const FilterModal = ({ urlCategory }) => {
         }
     }
 
+    const handleFilterContent = () => {
+        handleFindByGenre(urlCategory, genreId)
+        navigate(`/${urlCategory}`)
+    }
+
     return (
         <div className="filter" >
             <h2>Choose Category</h2>
 
             <div className="filter__content">
-                {genres && genres.map(({ name, id }) => (
+                {genres && genres.map(({ name, id }, index) => (
                     <label className="myCheckbox" key={id} >
                         <input
                             type="checkbox"
@@ -48,7 +58,7 @@ const FilterModal = ({ urlCategory }) => {
             </div>
 
             <Button
-                onClick={() => handleFindByGenre(urlCategory)}
+                onClick={handleFilterContent}
                 className='button__find'
             >
                 Let's Find

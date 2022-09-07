@@ -14,16 +14,22 @@ import { filterAnimate } from "../../animations/animations"
 
 const MovieGrid = ({ urlCategory }) => {
 
-    const { searchWord } = useParams()
-    console.log(useParams());
+    const { searchWord, genre } = useParams()
 
-    const { items, displayedPages, existingPages, getNeededList, loadMore, showFilter, setShowFilter, showSearchWords, setShowSearchWords } = useStateContext()
+    const { items, displayedPages, existingPages, getNeededList, loadMore, showFilter, setShowFilter, showSearchWords, setShowSearchWords, handleFindByGenre, genreId } = useStateContext()
 
     useEffect(() => {
 
-        getNeededList(urlCategory, searchWord)
+        // если ищем по категориям
+        if (genreId) {
+            handleFindByGenre(urlCategory, genreId)
+            // дефолт
+        } else {
+            getNeededList(urlCategory, searchWord)
+        }
+
         window.scrollTo(0, 0)
-    }, [urlCategory, searchWord])
+    }, [urlCategory, genre])
 
 
     useEffect(() => {
@@ -36,7 +42,6 @@ const MovieGrid = ({ urlCategory }) => {
 
     }, [urlCategory])
 
- 
     return (
         <>
             <motion.div className="section mb-2" layout>
@@ -65,6 +70,14 @@ const MovieGrid = ({ urlCategory }) => {
                         {items.length > 0
                             ? `Search results for '${searchWord}'`
                             : 'Nothing was found'}
+                    </motion.h3>
+                </motion.div>
+            )}
+
+            {genre && (
+                <motion.div layout className="movie-search__results">
+                    <motion.h3 layout>
+                        {`${genre} ${urlCategory === 'movie' ? 'Movies' : 'TV'}`}
                     </motion.h3>
                 </motion.div>
             )}

@@ -76,7 +76,7 @@ export const StateContext = ({ children }) => {
         setGenres(response.genres)
     }
 
-    function handleFindByGenre(urlCategory) {
+    function handleFindByGenre(urlCategory, genreId = []) {
         const params = {
             with_genres: genreId
         }
@@ -108,7 +108,6 @@ export const StateContext = ({ children }) => {
                 setShowFilter,
                 showSearchWords,
                 setShowSearchWords,
-
             }}
         >
             {children}

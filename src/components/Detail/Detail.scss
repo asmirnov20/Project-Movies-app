@@ -84,6 +84,15 @@
                 font-size: 0.8rem;
                 font-weight: 600;
                 background-color: $body-bg;
+                display: inline-block;
+                transition: all 0.1s ease-in;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.15);
+                    text-shadow: 0px 0px 13px rgb(255,255,255); 
+                    box-shadow: 0px 0px 30px rgb(0,0,0);
+                }
             }
         }
     }
