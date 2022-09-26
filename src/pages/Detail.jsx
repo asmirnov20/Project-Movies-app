@@ -17,7 +17,7 @@ const Detail = () => {
   const navigate = useNavigate()
 
   const [item, setItem] = useState([])
-  const { genres, getAllGenres, setGenreId } = useStateContext()
+  const { genres, getAllGenres, setGenreId, genreId } = useStateContext()
 
   useEffect(() => {
     const getDetail = async () => {
@@ -38,7 +38,7 @@ const Detail = () => {
     const clickedItem = e.target.innerText
     const neededGenre = genres.find(genre => genre.name === clickedItem)
     setGenreId([neededGenre.id])
-
+    console.log(neededGenre);
     navigate(`/${urlCategory}/find/${neededGenre.name}`)
   }
 
@@ -50,9 +50,7 @@ const Detail = () => {
 
       {item && (
         <>
-          <div
-            className="banner"
-            style={background}>
+          <div className="banner" style={background}>
           </div>
           <div className="mb-3 movie-content container">
             <div className="movie-content__poster">
@@ -71,16 +69,10 @@ const Detail = () => {
               viewport={{ once: true }}
               className="movie-content__info"
             >
-              <motion.h1
-                variants={detailsFadeInUp}
-                className="title"
-              >
+              <motion.h1 variants={detailsFadeInUp} className="title">
                 {item.title || item.name}
               </motion.h1>
-              <motion.div
-                variants={detailsFadeInUp}
-                className="genres"
-              >
+              <motion.div variants={detailsFadeInUp} className="genres">
                 {item.genres && item.genres.slice(0, 5).map((genre, index) => (
                   <span
                     onClick={handleGenreClick}
@@ -128,7 +120,7 @@ const Detail = () => {
                 type="similar"
                 id={item.id}
               />
-              
+
             </div>
           </div>
 

@@ -15,33 +15,33 @@ export const StateContext = ({ children }) => {
     const [showTrailer, setShowTrailer] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
 
-    const getNeededList = async (urlCategory, searchWord) => {
+    const getDefaultList = async (urlCategory) => {
         let response;
+        const params = {}
 
-        // если не было поиска
-        if (searchWord === undefined) {
-            const params = {}
-
-            if (urlCategory === 'tv') {
-                response = await tmdbApi.getTvList(tvType.popular, { params })
-            }
-            if (urlCategory === 'movie') {
-                response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
-
-            }
+        if (urlCategory === 'tv') {
+            response = await tmdbApi.getTvList(tvType.popular, { params })
         }
-        // если поиск был
-        else {
-            console.log(searchWord);
-            const params = {
-                query: searchWord
-            }
-            response = await tmdbApi.search(urlCategory, { params })
+        if (urlCategory === 'movie') {
+            response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
         }
 
         setItems(response.results)
         setExistingPages(response.total_pages)
     }
+    
+
+    const getSearch = async (urlCategory, searchWord) => {
+        let response;
+        const params = {
+            query: searchWord
+        }
+        response = await tmdbApi.search(urlCategory, { params })
+
+        setItems(response.results)
+        setExistingPages(response.total_pages)
+    }
+
 
     const loadMore = async (urlCategory, searchWord) => {
         let response;
@@ -70,11 +70,13 @@ export const StateContext = ({ children }) => {
         setDisplayedPages(displayedPages + 1)
     }
 
+
     const getAllGenres = async (urlCategory) => {
         let params = {}
         const response = await tmdbApi.genres(urlCategory, params)
         setGenres(response.genres)
     }
+
 
     function handleFindByGenre(urlCategory, genreId = []) {
         const params = {
@@ -92,7 +94,8 @@ export const StateContext = ({ children }) => {
     return (
         <Context.Provider
             value={{
-                getNeededList,
+                getDefaultList,
+                getSearch,
                 loadMore,
                 items,
                 displayedPages,

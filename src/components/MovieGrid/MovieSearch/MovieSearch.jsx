@@ -8,19 +8,18 @@ const MovieSearch = ({ urlCategory, className }) => {
     const [searchWord, setSearchWord] = useState('')
     const navigate = useNavigate()
 
-    const { getNeededList, setShowSearchWords, showSearchWords } = useStateContext()
+    const { getSearch, setShowSearchWords } = useStateContext()
 
     const goToSearch = useCallback(
         () => {
             if (searchWord.trim().length > 0) {
 
-                getNeededList(urlCategory, searchWord)
+                getSearch(urlCategory, searchWord)
                 navigate(`/${urlCategory}/search/${searchWord}`)
             }
-
             setShowSearchWords(true)
-            // setSearchWord('')
-        }, [searchWord, navigate])
+            setSearchWord('')
+        }, [searchWord])
 
     useEffect(() => {
         const enterEvent = (e) => {
@@ -36,7 +35,6 @@ const MovieSearch = ({ urlCategory, className }) => {
             document.removeEventListener('keyup', enterEvent)
         }
     }, [searchWord, goToSearch])
-
 
     return (
         <div className={`movie-search ${className}`}>

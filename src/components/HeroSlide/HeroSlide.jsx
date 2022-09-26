@@ -13,7 +13,7 @@ const HeroSlide = () => {
 
     useEffect(() => {
         const getMovies = async () => {
-            // const params = { page: 1, language: 'ru-RU' }
+
             const params = { page: 1 }
             try {
                 const response = await tmdbApi.getMoviesList(movieType.popular, { params })
@@ -28,24 +28,27 @@ const HeroSlide = () => {
 
     const swiperRef = useRef(null);
 
-    const autoplayOff = () => {
-        swiperRef.current.swiper.autoplay.stop()
-    }
-    const autoplayOn = () => {
-        swiperRef.current.swiper.autoplay.start()
-    }
+    // const autoplayOff = () => {
+    //     swiperRef.current.swiper.autoplayOff()
+    // }
+    // const autoplayOn = () => {
+    //     setTimeout(() => {
+    //         swiperRef.current.swiper.autoplayOff()
+    //     }, 4000)
+    // }
 
     return (
         <div className="hero-slide"
-            onMouseEnter={autoplayOff}
-            onMouseLeave={autoplayOn}>
+
+        >
             <Swiper
                 ref={swiperRef}
                 modules={[Autoplay]}
                 spaceBetween={0}
                 slidesPerView={1}
                 rewind={true}
-                autoplay={{ delay: 5000 }}
+                // onMouseEnter={autoplayOff}
+                // onMouseLeave={autoplayOn}
             >
                 {movieItems.map((item, index) => (
                     <SwiperSlide key={index}>

@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react"
 import tmdbApi, { category } from "../../../api/tmdbApi"
 import { useStateContext } from "../../../context/StateContext"
-import './TrailerModal.scss'
 import { motion } from 'framer-motion'
 import { fadeInDown } from "../../../animations/animations"
+import { useRef } from "react"
+import './TrailerModal.scss'
 
 const TrailerModal = ({ item }) => {
 
-    const { setShowTrailer} = useStateContext()
+    const { setShowTrailer } = useStateContext()
     const [trailerSrc, setTrailerSrc] = useState('')
+    const trailerRef = useRef()
 
     useEffect(() => {
         // получаем трейлер
@@ -25,13 +27,19 @@ const TrailerModal = ({ item }) => {
 
     }, [item.id])
 
-
     const closeModal = () => {
         setShowTrailer(false)
     }
 
     return (
-        <motion.div className='modal' variants={fadeInDown} initial='initial' animate='animate' exit='exit' >
+        <motion.div
+            ref={trailerRef}
+            className='modal'
+            variants={fadeInDown}
+            initial='initial'
+            animate='animate'
+            exit='exit'
+        >
             <div className="modal__content">
 
                 {trailerSrc && (

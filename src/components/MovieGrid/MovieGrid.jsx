@@ -14,29 +14,32 @@ import { filterAnimate } from "../../animations/animations"
 
 const MovieGrid = ({ urlCategory }) => {
 
-    const { searchWord, genre } = useParams()
+    const { urlSearch, genre } = useParams()
 
-    const { items, displayedPages, existingPages, getNeededList, loadMore, showFilter, setShowFilter, showSearchWords, setShowSearchWords, handleFindByGenre, genreId } = useStateContext()
+    const { items, displayedPages, existingPages, getDefaultList, getSearch, loadMore, showFilter, setShowFilter, showSearchWords, setShowSearchWords, handleFindByGenre, genreId } = useStateContext()
 
     useEffect(() => {
-
         // если ищем по категориям
-        if (genreId) {
+        if (genre) {
             handleFindByGenre(urlCategory, genreId)
-            // дефолт
-        } else {
-            getNeededList(urlCategory, searchWord)
+        }
+        // если поиск
+        else if (urlSearch) {
+            getSearch(urlCategory, urlSearch)
+        }
+        // дефолт
+        else {
+            getDefaultList(urlCategory, urlSearch)
         }
 
         window.scrollTo(0, 0)
-    }, [urlCategory, genre])
-
+    }, [urlCategory, urlSearch, genreId])
 
     useEffect(() => {
         setShowFilter(false)
 
         // если не на странице поиска
-        if (!searchWord) {
+        if (!urlSearch) {
             setShowSearchWords(false)
         }
 
@@ -45,9 +48,10 @@ const MovieGrid = ({ urlCategory }) => {
     return (
         <>
             <motion.div className="section mb-2" layout>
-                <MovieSearch urlCategory={urlCategory} />
+                <MovieSearch urlCategory={urlCategory} urlSearch={urlSearch} />
                 <FilterButton />
             </motion.div>
+
             <AnimatePresence>
                 {showFilter && (
                     <motion.div
@@ -68,7 +72,7 @@ const MovieGrid = ({ urlCategory }) => {
                 <motion.div layout className="movie-search__results">
                     <motion.h3 layout>
                         {items.length > 0
-                            ? `Search results for '${searchWord}'`
+                            ? `Search results for '${urlSearch}'`
                             : 'Nothing was found'}
                     </motion.h3>
                 </motion.div>
@@ -96,7 +100,7 @@ const MovieGrid = ({ urlCategory }) => {
                 <div className="movie-grid__loadmore">
                     <OutlineButton
                         className='small'
-                        onClick={() => loadMore(urlCategory, searchWord)}
+                        onClick={() => loadMore(urlCategory, urlSearch)}
                     >
                         Load more
                     </OutlineButton>

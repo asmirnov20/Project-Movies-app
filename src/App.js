@@ -6,23 +6,27 @@ import Layout from './components/Layout';
 import Catalog from './pages/Catalog'
 import Home from './pages/Home'
 import Detail from './pages/Detail'
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, LayoutGroup } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
 function App() {
+
   const location = useLocation()
+
   return (
-    <AnimatePresence mode='wait'>
-      <Routes location={location} key={location.pathname}>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path=':urlCategory' element={<Catalog />} />
-          <Route path=':urlCategory/:id' element={<Detail />} />
-          <Route path=':urlCategory/search/:searchWord' element={<Catalog />} />
-          <Route path=':urlCategory/find/:genre' element={<Catalog />} />
-        </Route>
-      </Routes>
-    </AnimatePresence>
+    <LayoutGroup>
+      <AnimatePresence mode='wait'>
+        <Routes location={location} key={location.pathname}>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path=':urlCategory' element={<Catalog />} />
+            <Route path=':urlCategory/:id' element={<Detail />} />
+            <Route path=':urlCategory/search/:urlSearch' element={<Catalog />} />
+            <Route path=':urlCategory/find/:genre' element={<Catalog />} />
+          </Route>
+        </Routes>
+      </AnimatePresence>
+    </LayoutGroup>
   );
 }
 

@@ -5,7 +5,6 @@ import TrailerModal from "../TrailerModal/TrailerModal"
 import { useStateContext } from "../../../context/StateContext"
 import { motion } from "framer-motion"
 import { fadeInUp, stagger, scaleAnimate } from "../../../animations/animations"
-import { AnimatePresence } from 'framer-motion'
 
 const SlideItem = ({ item }) => {
 
@@ -20,6 +19,7 @@ const SlideItem = ({ item }) => {
 
     const getTrailer = () => {
         setShowTrailer(true)
+        
     }
 
     return (
@@ -59,11 +59,11 @@ const SlideItem = ({ item }) => {
                 </div>
             </div>
 
-            <AnimatePresence>
+          
                 {showTrailer && (
                     <TrailerModal item={item} />
                 )}
-            </AnimatePresence>
+     
         </div >
     )
 }

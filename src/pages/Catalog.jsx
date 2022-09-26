@@ -3,7 +3,7 @@ import PageHeader from "../components/page-header/PageHeader";
 import { category } from '../api/tmdbApi'
 import MovieGrid from "../components/MovieGrid/MovieGrid";
 import { pageTransition } from '../animations/animations'
-import { motion, AnimateSharedLayout } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 
 const Catalog = () => {
@@ -11,7 +11,6 @@ const Catalog = () => {
   const { urlCategory } = useParams()
 
   return (
-    <AnimateSharedLayout>
       <motion.div
         initial='initial'
         animate='animate'
@@ -29,7 +28,6 @@ const Catalog = () => {
 
         </div>
       </motion.div>
-    </AnimateSharedLayout>
   )
 }
 
