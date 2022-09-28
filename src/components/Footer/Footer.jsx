@@ -9,7 +9,7 @@ const Footer = () => {
     <div className='footer' style={{ backgroundImage: `url(${background})` }}>
       <div className="footer__content container">
 
-        <div className="footer__content logo">
+        <div className="footer__content-logo">
           <div className="logo">
             <img src={logo} alt="logo" />
             <Link to='/'>Amovies</Link>

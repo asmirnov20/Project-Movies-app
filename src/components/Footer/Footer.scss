@@ -10,9 +10,17 @@
     &__content {
         max-width: 1000px;
 
-        &__logo {
+        &-logo {
             @include flex(center, center);
             margin-bottom: 3rem;
+
+            div {
+                @include flex(center, center);
+
+                @include mobile {
+                    display:none;
+                }
+            }
         }
 
         &__menus {
@@ -29,6 +37,10 @@
             flex-direction: column;
             margin-top: 1rem;
 
+            @include mobile {
+                @include flex(center, center);
+            }
+           
             font-size: 1.5rem;
             font-weight: 600;
 
@@ -38,3 +50,4 @@
         }
     }
 }
+

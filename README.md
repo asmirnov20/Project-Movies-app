@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+<h1 align='center'>Movies app</h1> 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](src/assets/movies-readme.jpg?raw=true)
 
-## Available Scripts
+<h2 align='center'><a href='https://movies-react-app-green.vercel.app' target='_blank'> Deployed Project</a></h2> 
 
-In the project directory, you can run:
+## **Description**
 
-### `npm start`
+<p align='justify'> 
+This is a React project. This app is fully animated Movie catalog with applied adaptive design. For filling its content i've utilized ‘The Movie Database API'. In the Hero section of the Home page you can watch a trailer of some popular product or get to the Details page by clicking 'Watch now'.</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](src//assets/Trailer.jpg)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p align='justify'> 
+If you scroll down you would find Trending and Top Rated movies and TV series.</p>
 
-### `npm test`
+![image](src//assets/Home-page.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p>By clicking on a movie you'll be directed to Detail page where you'd find all the information about it, trailers as well as similar products.</p>
 
-### `npm run build`
+![image](src//assets/Details-top.jpg)
+![image](src//assets/Details-bottom.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align='justify'> 
+You can also make a search or find needed category from the deatil page itself by clicking on the specific category. For instance, if we click on 'Crime' from the image above we will be directed to another page with displayed results:
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](src//assets/Find-results.jpg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align='justify'> 
+In this app i also implemented search and filter options. Below are respective images </p>
 
-### `npm run eject`
+![image](src//assets/Search-results.jpg)
+![image](src//assets/filter-results.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<p align='justify'> 
+This app is also fully adaptive </p>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](src//assets/iphone12.jpg)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## **Tech stack:**
+<ul>
+<li>HTML</li>
+<li>SASS (SCSS)</li>
+<li>JavaScript</li>
+<li>React</li>
+<li>Axios</li>
+<li>The Movie Database API</li>
+<li>Framer Motion</li>
+</ul>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ <p align='justify'> While working on this project, I greatly improved my understanding of React, REST API, SASS pre-processor and Framer Motion. </p>
