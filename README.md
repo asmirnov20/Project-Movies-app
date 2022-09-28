@@ -1,6 +1,6 @@
 <h1 align='center'>Movies app</h1> 
 
-![image](src/assets/movies-readme.jpg?raw=true)
+![image](src/assets/main.jpg)
 
 <h2 align='center'><a href='https://movies-react-app-green.vercel.app' target='_blank'> Deployed Project</a></h2> 
 
