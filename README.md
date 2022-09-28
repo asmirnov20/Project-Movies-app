@@ -7,9 +7,11 @@
 ## **Description**
 
 <p align='justify'> 
-This is a React project. This app is fully animated Movie catalog with applied adaptive design. For filling its content i've utilized ‘The Movie Database API'. In the Hero section of the Home page you can watch a trailer of some popular product or get to the Details page by clicking 'Watch now'.</p>
+This React app is a fully animated Movie catalog with applied adaptive design. For filling its content I've utilized TMDB API.</p> 
 
-![image](src//assets/Trailer.jpg)
+<p>In the Hero section of the Home page you can watch a trailer of some popular product or get to the Details page by clicking 'Watch now'.</p>
+
+![image](src//assets/trailer.jpg)
 
 <p align='justify'> 
 If you scroll down you would find Trending and Top Rated movies and TV series.</p>
@@ -18,19 +20,19 @@ If you scroll down you would find Trending and Top Rated movies and TV series.</
 
 <p>By clicking on a movie you'll be directed to Detail page where you'd find all the information about it, trailers as well as similar products.</p>
 
-![image](src//assets/Details-top.jpg)
-![image](src//assets/Details-bottom.jpg)
+![image](src//assets/details-top.jpg)
+![image](src//assets/details-bottom.jpg)
 
 <p align='justify'> 
 You can also make a search or find needed category from the deatil page itself by clicking on the specific category. For instance, if we click on 'Crime' from the image above we will be directed to another page with displayed results:
 </p>
 
-![image](src//assets/Find-results.jpg)
+![image](src//assets/find-results.jpg)
 
 <p align='justify'> 
 In this app i also implemented search and filter options. Below are respective images </p>
 
-![image](src//assets/Search-results.jpg)
+![image](src//assets/search-results.jpg)
 ![image](src//assets/filter-results.jpg)
 
 <p align='justify'> 

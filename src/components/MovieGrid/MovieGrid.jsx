@@ -45,6 +45,12 @@ const MovieGrid = ({ urlCategory }) => {
 
     }, [urlCategory])
 
+    useEffect(() => {
+        if (urlSearch) {
+            setShowSearchWords(true)
+        }
+    }, [])
+
     return (
         <>
             <motion.div className="section mb-2" layout>
